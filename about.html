@@ -1,0 +1,198 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+</head>
+
+<body>
+
+    <header>
+       <div id="navbar"></div>
+    
+    </header>
+          
+    <main>
+
+<!-- banner section  -->
+
+
+<section>
+
+
+    <div class="relative h-screen bg-fixed bg-center bg-cover" style="background-image: url('https://media.istockphoto.com/id/1347150429/photo/professional-mechanic-working-on-the-engine-of-the-car-in-the-garage.jpg?s=612x612&w=0&k=20&c=5zlDGgLNNaWsp_jq_L1AsGT85wrzpdl3kVH-75S-zTU=');">
+        <div class="absolute inset-0 bg-black opacity-50"></div> 
+    
+   
+        <div class="absolute inset-y-0 left-0 flex flex-col justify-center items-start ml-8">
+            <h1 class="text-white text-6xl font-bold">About us</h1>
+            <p class="text-gray-300 text-xl font-bold mt-4">know details our services</p>
+        </div>
+    </div>
+
+
+</section>
+
+
+
+
+
+<section>
+
+
+
+    <div class="container mx-auto px-4 py-12">
+        <!-- Main Container -->
+        <div class="bg-white rounded-lg shadow-lg md:flex">
+
+            <!-- Left side: Contact Form -->
+            <div class="md:w-2/3 p-8">
+                <h2 class="text-2xl font-bold mb-6">Get in touch</h2>
+                
+                <form>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                        <!-- Name and Email -->
+                        <input class="w-full p-4 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" type="text" placeholder="Name" required>
+                        <input class="w-full p-4 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" type="email" placeholder="Email" required>
+                    </div>
+                    <!-- Subject -->
+                    <input class="w-full p-4 mb-6 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" type="text" placeholder="Subject" required>
+                    <!-- Message -->
+                    <textarea class="w-full p-4 mb-6 h-32 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Message" required></textarea>
+                    <!-- Submit Button -->
+                    <button type="submit" class="px-6 py-3 text-white bg-blue-500 rounded hover:bg-blue-600 focus:outline-none">Send Message</button>
+                </form>
+            </div>
+
+            <!-- Right side: Contact Information -->
+            <div class="md:w-1/3 bg-blue-500 text-white p-8 rounded-r-lg">
+                <h2 class="text-2xl font-bold mb-6">Contact us</h2>
+                <ul class="space-y-6">
+                    <li class="flex items-center">
+                        <span class="inline-block bg-white text-blue-500 p-3 rounded-full mr-4">
+                            <i class="fas fa-map-marker-alt fa-lg"></i>
+                        </span>
+                        <p>
+                            <span class="font-semibold">Address:</span> 198 West 21th Street, Suite 721 New York NY 10016
+                        </p>
+                    </li>
+                    <li class="flex items-center">
+                        <span class="inline-block bg-white text-blue-500 p-3 rounded-full mr-4">
+                            <i class="fas fa-phone-alt fa-lg"></i>
+                        </span>
+                        <p>
+                            <span class="font-semibold">Phone:</span> + 1235 2355 98
+                        </p>
+                    </li>
+                    <li class="flex items-center">
+                        <span class="inline-block bg-white text-blue-500 p-3 rounded-full mr-4">
+                            <i class="fas fa-envelope fa-lg"></i>
+                        </span>
+                        <p>
+                            <span class="font-semibold">Email:</span> info@carreapir.com
+                        </p>
+                    </li>
+                    <li class="flex items-center">
+                        <span class="inline-block bg-white text-blue-500 p-3 rounded-full mr-4">
+                            <i class="fas fa-globe fa-lg"></i>
+                        </span>
+                        <p>
+                            <span class="font-semibold">Website:</span> carreapair.com
+                        </p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+
+</section>
+
+
+<!-- faq section  -->
+<section>
+
+
+    <div class="container mx-auto px-4 py-12">
+        <h2 class="text-3xl font-bold text-center mb-8">Frequently Asked Questions</h2>
+        
+        <div class="space-y-4">
+            <!-- FAQ 1 -->
+            <div class="bg-white border border-gray-300 rounded-lg shadow">
+                <button class="w-full text-left p-4 focus:outline-none" onclick="toggleFAQ(1)">
+                    <h3 class="font-semibold text-lg">What is your return policy?</h3>
+                </button>
+                <div id="faq1" class="p-4 hidden">
+                    <p>We offer a 30-day return policy with a full refund, provided the item is unused and in its original condition.</p>
+                </div>
+            </div>
+
+            <!-- FAQ 2 -->
+            <div class="bg-white border border-gray-300 rounded-lg shadow">
+                <button class="w-full text-left p-4 focus:outline-none" onclick="toggleFAQ(2)">
+                    <h3 class="font-semibold text-lg">How can I track my order?</h3>
+                </button>
+                <div id="faq2" class="p-4 hidden">
+                    <p>Once your order is shipped, you will receive a tracking number via email to monitor the progress of your delivery.</p>
+                </div>
+            </div>
+
+            <!-- FAQ 3 -->
+            <div class="bg-white border border-gray-300 rounded-lg shadow">
+                <button class="w-full text-left p-4 focus:outline-none" onclick="toggleFAQ(3)">
+                    <h3 class="font-semibold text-lg">Do you offer international shipping?</h3>
+                </button>
+                <div id="faq3" class="p-4 hidden">
+                    <p>Yes, we offer international shipping. Shipping costs and delivery times may vary depending on the destination country.</p>
+                </div>
+            </div>
+
+            <!-- FAQ 4 -->
+            <div class="bg-white border border-gray-300 rounded-lg shadow">
+                <button class="w-full text-left p-4 focus:outline-none" onclick="toggleFAQ(4)">
+                    <h3 class="font-semibold text-lg">What payment methods do you accept?</h3>
+                </button>
+                <div id="faq4" class="p-4 hidden">
+                    <p>We accept all major credit cards, PayPal, and Apple Pay.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript for FAQ Toggle -->
+    <script>
+        function toggleFAQ(faqNumber) {
+            const faq = document.getElementById(`faq${faqNumber}`);
+            faq.classList.toggle('hidden');
+        }
+    </script>
+
+
+</section>
+
+
+
+
+
+
+
+
+    </main>
+    <footer>
+
+        <div id="footer"></div>
+    </footer>
+
+    <!-- Flowbite JS for handling the navbar menu toggle -->
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@1.6.5/dist/flowbite.min.js"></script>
+    
+    <script src="index.js"></script>
+    <script src="navbar.js"></script>
+</body>
+
+</html>
