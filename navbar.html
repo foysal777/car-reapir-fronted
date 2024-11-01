@@ -13,24 +13,27 @@
 
 <body>
 
-    <header class="pt-16" x-data="{ isOpen: false }">
+ 
+
+ 
+
+    <header class="pt-16" x-data="{ isOpen: false, dropdownOpen: false }">
         <nav id="navbar" class="bg-white border-gray-200 fixed top-0 w-full z-50 shadow-lg">
             <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
                 <!-- Logo -->
                 <a href="index.html" class="flex items-center space-x-3 rtl:space-x-reverse">
                     <img src="https://i.ibb.co.com/LhLpmVD/logo.png" class="h-12" alt="Logo" />
                 </a>
-
+    
                 <!-- Authentication and User Info Buttons -->
                 <div class="flex items-center space-x-8 md:order-2">
-                    <!-- Login/Register buttons (visible when not authenticated) -->
                     <div id="auth-buttons" class="flex items-center space-x-4">
                         <a id="loginBtn" href="login.html"
                             class="text-gray-900 bg-white border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 font-medium rounded-lg text-sm px-4 py-2">Log In</a>
                         <a id="registerBtn" href="register.html"
                             class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2">Register</a>
                     </div>
-
+    
                     <!-- User info and Logout button (visible when authenticated) -->
                     <div id="user-info" class="hidden flex items-center space-x-4">
                         <span id="user-email" class="text-gray-900 font-medium"></span>
@@ -38,7 +41,7 @@
                             class="text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-4 py-2">Logout</button>
                     </div>
                 </div>
-
+    
                 <!-- Hamburger menu button (for small screens) -->
                 <button @click="isOpen = !isOpen" type="button"
                     class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
@@ -49,22 +52,37 @@
                             d="M1 1h15M1 7h15M1 13h15" />
                     </svg>
                 </button>
-
+    
                 <!-- Navbar menu -->
                 <div :class="{ 'hidden': !isOpen }" class="w-full md:flex md:w-auto md:order-1" id="navbar-menu">
                     <ul class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 md:flex-row md:mt-0 md:border-0 md:bg-white">
                         <li><a href="index.html" class="nav-link block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">Home</a></li>
-                        <li><a href="services.html" class="nav-link block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">Services</a></li>
-                        <li><a href="dashboard.html" class="nav-link block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">Project</a></li>
-                        <li><a href="blog.html" class="nav-link block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">Blog</a></li>
+                        
+                        <!-- Dropdown Menu for Services -->
+                        <li class="relative" @mouseenter="dropdownOpen = true" @mouseleave="dropdownOpen = false">
+                            <a href="#" class="nav-link block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">
+                                See more
+                                <svg class="w-4 h-4 inline-block ml-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 10l5 5 5-5H7z" />
+                                </svg>
+                            </a>
+                            <ul x-show="dropdownOpen" class="absolute left-0 z-10 mt-1 w-48 bg-white border border-gray-200 rounded-lg shadow-lg" x-transition>
+                                <li><a href="services.html" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Services</a></li>
+                                <li><a href="userparts.html" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Parts & Accessories</a></li>
+                                <li><a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Gallery</a></li>
+                                <li id="admin-dashboard-link" style="display: none;"><a href="dashboard.html" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Admin Dashboard</a></li>
+                            </ul>
+                        </li>
+    
+                        <li><a href="#" class="nav-link block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">Project</a></li>
+                        <li><a href="userblog.html" class="nav-link block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">Blog</a></li>
                         <li><a href="about.html" class="nav-link block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">About</a></li>
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
-
-    <main></main>
+    
 
 
 

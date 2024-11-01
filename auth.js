@@ -35,7 +35,7 @@ document.querySelector('form').addEventListener('submit', async (event) => {
 
         if (response.ok) {
             console.log(payload);
-            // alert("Account created successfully!");
+            alert("Check your E-mail & confirm now");
              window.location.href = 'login.html'; 
         } else {
             
@@ -83,8 +83,8 @@ document.getElementById("loginForm").addEventListener("submit", async function (
         
             localStorage.setItem("email",userEmail );
 
-            // Redirect to another page (e.g., dashboard) if needed
-            // window.location.href = "index.html";
+      
+            window.location.href = "index.html";
         } else {
             const errorData = await response.json();
             alert(errorData.error || "Login failed");

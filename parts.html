@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+</head>
+
+<body>
+
+    <header>
+        <div id="navbar"></div>
+
+    </header>
+
+    <main class="pt-10">
+
+        <p class="text-center text-2xl">Welcome to part & accessories</p>
+
+
+        <section class="p-2">
+
+
+            <!-- Add Post Button -->
+            <button onclick="openModal()"
+                class="bg-blue-600 text-white rounded-lg px-4 py-2 mt-4 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                Add Post
+            </button>
+
+            <!-- Card Display Area -->
+            <!-- Card Container Grid Setup -->
+            <div id="card-container"
+                class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-6 max-w-7xl mx-auto"></div>
+
+
+            <!-- Modal -->
+            <div id="modal" class="fixed inset-0 flex justify-center items-center bg-gray-600 bg-opacity-50 hidden">
+                <div class="bg-white rounded-lg shadow-lg w-1/3 p-6 relative">
+                    <h2 class="text-xl font-semibold text-gray-800">Create a New Post</h2>
+                    <form id="postForm" class="mt-4" onsubmit="submitPost(event)">
+                        <!-- Title Field -->
+                        <label class="block text-gray-600">Title</label>
+                        <input type="text" id="title" class="w-full border rounded-lg p-2 mt-1 mb-4"
+                            placeholder="Enter title" required>
+
+                        <!-- Price Field -->
+                        <label class="block text-gray-600">Price</label>
+                        <input type="number" id="price" class="w-full border rounded-lg p-2 mt-1 mb-4"
+                            placeholder="Enter price" required>
+
+                        <!-- Image Upload Field -->
+                        <label class="block text-gray-600">Upload Image</label>
+                        <input type="file" id="image" class="w-full border rounded-lg p-2 mt-1 mb-4" required>
+
+                        <!-- Submit Button -->
+                        <button type="submit"
+                            class="mt-4 bg-blue-600 text-white rounded-lg px-4 py-2 hover:bg-blue-700">
+                            Submit
+                        </button>
+                    </form>
+                    <!-- Close Button -->
+                    <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-500 text-xl">&times;</button>
+                </div>
+            </div>
+
+        </section>
+
+
+
+    </main>
+
+
+    <footer>
+
+        <div id="footer" class="pt-5"></div>
+    </footer>
+
+    <!-- Flowbite JS for handling the navbar menu toggle -->
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@1.6.5/dist/flowbite.min.js"></script>
+
+    <script src="index.js"></script>
+    <script src="navbar.js"></script>
+    <script src="parts.js"></script>
+</body>
+
+</html>

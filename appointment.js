@@ -18,11 +18,12 @@
       };
 
       try {
-      
-        const response = await fetch("http://127.0.0.1:8000/appoint/api/appointments/", {
+        const token = localStorage.getItem("token");
+        const response = await fetch("http://127.0.0.1:8000/appoint/appoint_details/", {
           method: "POST",
           headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
+            "Authorization": `Token ${token}`
           },
           body: JSON.stringify(formData)
         });

@@ -24,53 +24,31 @@ fetch("navbar.html")
 
 
 
+// for is admin true 
 
-       
+async function checkAdminAccess() {
+    try {
+        const token = localStorage.getItem("token");
+        const response = await fetch("http://127.0.0.1:8000/account/adminAcess/",
+            {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                     "Authorization": `Token ${token}`
 
-// loged in user can see his profile 
+            }});
+        const data = await response.json();
+        
+        if (data.is_admin) {
+            document.getElementById("admin-dashboard-link").style.display = "block";
+        }
+    } catch (error) {
+        console.error("Error checking admin access:", error);
+    }
+}
 
-
-// document.addEventListener("DOMContentLoaded", async function () {
-
-
-//     // Fetch user details to determine if logged in
-//     try {
-//         const token = localStorage.getItem("token");
-//         console.log(token);
-//         const response = await fetch("http://127.0.0.1:8000/account/user/details/", {
-//             method: "GET",
-//             headers: {
-//                 "Content-Type": "application/json",
-             
-//                 Authorization: `Token${token}`,
-
-//             }
-//         });
-
-//         if (response.ok) {
-//             // User is authenticated, retrieve user data
-//             const userData = await response.json();
-
-//             // Update UI with user details
-//             document.getElementById("user-email").textContent = `${userData.email} (${userData.first_name})`;
-//             document.getElementById("user-info").classList.remove("hidden");
-//             document.getElementById("auth-buttons").classList.add("hidden");
-//         } else {
-//             // User is not authenticated, show login/register buttons
-//             document.getElementById("user-info").classList.add("hidden");
-//             document.getElementById("auth-buttons").classList.remove("hidden");
-//         }
-//     } catch (error) {
-//         console.error("Error fetching user details:", error);
-//     }
-
-//     // Logout button functionality
-//     document.getElementById("logoutBtn").addEventListener("click", function () {
-//         // Perform logout (e.g., remove token, redirect to login)
-//         localStorage.removeItem("token"); // Remove token from local storage
-//         window.location.href = "login.html"; // Redirect to login page
-//     });
-// });
+// Call the function when the page loads
+window.onload = checkAdminAccess;
 
 
 
@@ -78,18 +56,21 @@ document.addEventListener("DOMContentLoaded", async function () {
   
     try {
         const token = localStorage.getItem("token");
+
         if (token) {
+            console.log(token);
             const response = await fetch("http://127.0.0.1:8000/account/user/details/", {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",
-                    "Authorization": `Token ${token}`
+                     "Authorization": `Token ${token}`
                 }
             });
-
+          
             if (response.ok) {
                 const userData = await response.json();
                 console.log(userData);
+             
 
                 document.getElementById("user-email").textContent = `${userData.email} (${userData.first_name})`;
                 document.getElementById("user-info").classList.remove("hidden");
@@ -122,7 +103,7 @@ document.addEventListener("DOMContentLoaded", async function () {
             });
 
             if (response.ok) {
-                // Logout successful, remove token and redirect to login page
+             
                 alert("Logout complete");
                 localStorage.removeItem("token");
                 window.location.href = "login.html";
@@ -138,7 +119,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     const currentPage = `/${window.location.pathname.split("/").pop()}`;
     document.querySelectorAll(".nav-link").forEach(link => {
         if (link.getAttribute("href") === currentPage) {
-            link.classList.add("text-blue-700", "font-bold");
+            link.classList.add("text-teal-700", "font-bold");
         } else {
             link.classList.remove("text-blue-700", "font-bold");
         }
