@@ -19,7 +19,7 @@
 
       try {
         const token = localStorage.getItem("token");
-        const response = await fetch("http://127.0.0.1:8000/appoint/appoint_details/", {
+        const response = await fetch("https://car-repair-backend-drf.vercel.app/appoint/appoint_details/", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
