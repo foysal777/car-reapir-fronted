@@ -4,7 +4,7 @@ async function loadUserDetails() {
         const token = localStorage.getItem("token");
 
         // Fetch data from the API with Authorization header
-        const response = await fetch("http://127.0.0.1:8000/account/user/details/", {
+        const response = await fetch("https://car-repair-backend-drf.vercel.app/account/user/details/", {
             method: 'GET',
             headers: {
             

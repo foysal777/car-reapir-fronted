@@ -25,7 +25,7 @@ document.querySelector('form').addEventListener('submit', async (event) => {
 
     try {
        
-        const response = await fetch('http://127.0.0.1:8000/account/register/', {
+        const response = await fetch('https://car-repair-backend-drf.vercel.app/account/register/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -63,7 +63,7 @@ document.getElementById("loginForm").addEventListener("submit", async function (
 
     // Send login request to backend
     try {
-        const response = await fetch("http://127.0.0.1:8000/account/login/", {
+        const response = await fetch("https://car-repair-backend-drf.vercel.app/account/login/", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

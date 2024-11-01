@@ -9,7 +9,7 @@ function closeModal() {
 }
 
 
-const API_URL = 'http://127.0.0.1:8000/parts/partsadd/';
+const API_URL = 'https://car-repair-backend-drf.vercel.app/parts/partsadd/';
 const IMGBB_API_URL = 'https://api.imgbb.com/1/upload';
 const IMGBB_API_KEY = 'add07eb16060304e9d624f9962001708';
 

@@ -2,7 +2,7 @@
 // fetch the total number of appointment
 async function fetchTotalAppointments() {
     try {
-        const response = await fetch("http://127.0.0.1:8000/appoint/appoint_details/");
+        const response = await fetch("https://car-repair-backend-drf.vercel.app/appoint/appoint_details/");
         const data = await response.json();
 
         
@@ -22,7 +22,7 @@ fetchTotalAppointments();
 
 async function fetchAppointments() {
     try {
-        const response = await fetch("http://127.0.0.1:8000/appoint/appoint_details/");
+        const response = await fetch("https://car-repair-backend-drf.vercel.app/appoint/appoint_details/");
         const data = await response.json();
 
    
@@ -51,7 +51,7 @@ async function fetchAppointments() {
     // Fetch appointment details when the name is clicked
     async function showAppointmentDetails(id) {
         try {
-            const response = await fetch(`http://127.0.0.1:8000/appoint/appointments/${id}/`);
+            const response = await fetch(`https://car-repair-backend-drf.vercel.app/appoint/appointments/${id}/`);
             const appointment = await response.json();
 
             const appointmentDetailList = document.getElementById("appointmentDetailList");

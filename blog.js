@@ -46,7 +46,7 @@ async function submitPost() {
 
     // Send post data to the backend
     try {
-        const response = await fetch('http://127.0.0.1:8000/blog/post/', {
+        const response = await fetch('https://car-repair-backend-drf.vercel.app/blog/post/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -78,7 +78,7 @@ async function submitPost() {
 
 async function loadPosts() {
     try {
-        const response = await fetch('http://127.0.0.1:8000/blog/post/');
+        const response = await fetch('https://car-repair-backend-drf.vercel.app/blog/post/');
         
         if (!response.ok) {
             throw new Error('Failed to fetch posts');
@@ -131,7 +131,7 @@ function displayPost(postData) {
 
 async function deletePost(postId, postCard) {
     try {
-        const response = await fetch(`http://127.0.0.1:8000/blog/post/delete/${postId}/`, {
+        const response = await fetch(`https://car-repair-backend-drf.vercel.app/blog/post/delete/${postId}/`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',

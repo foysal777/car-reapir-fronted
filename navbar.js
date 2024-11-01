@@ -29,7 +29,7 @@ fetch("navbar.html")
 async function checkAdminAccess() {
     try {
         const token = localStorage.getItem("token");
-        const response = await fetch("http://127.0.0.1:8000/account/adminAcess/",
+        const response = await fetch("https://car-repair-backend-drf.vercel.app/account/adminAcess/",
             {
                 method: "GET",
                 headers: {
@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
         if (token) {
             console.log(token);
-            const response = await fetch("http://127.0.0.1:8000/account/user/details/", {
+            const response = await fetch("https://car-repair-backend-drf.vercel.app/account/user/details/", {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",
@@ -94,7 +94,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         const token = localStorage.getItem("token");
 
         try {
-            const response = await fetch("http://127.0.0.1:8000/account/logout/", {
+            const response = await fetch("https://car-repair-backend-drf.vercel.app/account/logout/", {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",
