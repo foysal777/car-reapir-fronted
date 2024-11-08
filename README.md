@@ -14,11 +14,10 @@ There are two types of user
 
 ## User
 - user can register, login and logout.
-- User can see Product details.
-- User can add to cart products.
-- Users can buy products.
+- User can book appointments for a car
+- User can see service details
+- Users can purchase specific parts.
 - The user gives a review of the product.
-- Users filter, Search, sorting, Color the their desired products.
 - Users can give payment by SSL COMMERZE
 
   
