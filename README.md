@@ -45,7 +45,7 @@ There are two types of user
 - **APIs**: For potential integration with external services
 
 ## Usages
-- Navigate to https://foysal777.github.io/cloth-store-live-fronted/ in your browser.
+- Navigate to https://foysal777.github.io/car-reapir-fronted/ in your browser.
 - Register as a new user or login if you already have an account.
 - Browse products, add them to your book appointment, view details, and purchase parts and accessories.
 - Access your dashboard to manage your profile, view your orders, and check out saved items.
