@@ -1,4 +1,4 @@
-# Car Repair Project
+# Car Repair Project Management
 
 A comprehensive web application for managing a car repair business. This system enables mechanics, admins, and customers to handle tasks like booking repair appointments, tracking repair history, managing parts inventory, and invoicing.
 There are two types of user 
