@@ -74,7 +74,11 @@ document.getElementById("loginForm").addEventListener("submit", async function (
         if (response.ok) {
             const data = await response.json();
             console.log(data);
-            alert("login successfull")
+       
+
+                alert("login successfull")
+            
+     
             const token = data.token;
             const userEmail = data.email;
          
@@ -91,6 +95,6 @@ document.getElementById("loginForm").addEventListener("submit", async function (
         }
     } catch (error) {
         console.error("Error:", error);
-        alert("An error occurred. Please try again.");
+        alert("login failed. Please try again.");
     }
 });
