@@ -102,7 +102,7 @@ function addCard(postData) {
             <p class="text-blue-600 text-2xl font-bold mt-1">$${postData.price}</p>
 
              <a href="https://sandbox.sslcommerz.com/EasyCheckOut/testcde07ebaa4f214f7d85cb12d926294a4480" onclick="handleBuyNow('${postData.id}', '${postData.title}', ${postData.price})"
-                class="mt-4 bg-blue-700 text-white rounded-lg px-4 py-2 hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                class="mt-4 bg-blue-700 text-center text-white rounded-lg px-4 py-2 hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-500">
                 Buy Now
             </a>
         </div>

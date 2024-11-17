@@ -91,25 +91,30 @@ async function loadPosts() {
 
 // Add card to display area
 function addCard(postData) {
-    const cardContainer = document.getElementById('card-container');
-    const card = document.createElement('div');
+    const tableBody = document.querySelector('#card-table tbody');
+    const row = document.createElement('tr');
 
-    // Set card styling and width
-    card.className = 'card bg-white rounded-lg shadow-md overflow-hidden transform transition ease-in-out duration-3000 duration-100 hover:shadow-lg  border-2 border-black-500';
+    row.className = 'border-t border-gray-300 hover:bg-gray-100';
 
-    card.innerHTML = `
-        <div class="card-image w-full h-48 overflow-hidden rounded-t-lg">
-            <img src="${postData.image_url}" alt="Product Image" class="w-full h-full object-cover">
-        </div>
-        <div class="p-4 flex flex-col justify-between">
-            <h2 class="text-lg font-semibold text-gray-800 truncate">${postData.title}</h2>
-            <p class="text-blue-600 text-2xl font-bold mt-1">$${postData.price}</p>
-        </div>
+    row.innerHTML = `
+        
+        <td class="border px-4 py-2">
+            <img src="${postData.image_url}" alt="Product Image" class="w-20 h-20 object-cover rounded">
+        </td>
+        <td class="border px-4 py-2">${postData.title}</td>
+        <td class="border px-4 py-2 text-blue-600 text-xl font-bold">$${postData.price}</td>
+        <td class="border px-4 py-2 text-center">
+            <button class="delete-button bg-red-500 text-white px-2 py-1 rounded hover:bg-red-700">Delete</button>
+        </td>
     `;
 
-    cardContainer.appendChild(card);
-}
+    // Add delete functionality
+    row.querySelector('.delete-button').addEventListener('click', () => {
+        row.remove();
+    });
 
+    tableBody.appendChild(row);
+}
 
 
 // Load posts on page load

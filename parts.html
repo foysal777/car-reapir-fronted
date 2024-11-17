@@ -9,6 +9,37 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 </head>
 
+<style>
+
+/* Add table styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table th, table td {
+    text-align: left;
+    padding: 8px;
+    border: 1px solid #ccc;
+}
+
+table th {
+    background-color: #f8f9fa;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+}
+
+.delete-button {
+    display: inline-block;
+    padding: 4px 8px;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+
+</style>
+
+
 <body>
 
     <header>
@@ -18,18 +49,19 @@
 
     <main class="pt-10">
 
-        <p class="text-center text-2xl">Welcome to part & accessories</p>
+   
 
 
         <section class="p-2">
 
 
             <!-- Add Post Button -->
+             <div class="text-center">  
             <button onclick="openModal()"
-                class="bg-blue-600 text-white rounded-lg px-4 py-2 mt-4 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500">
-                Add Post
+                class="bg-blue-600 text-white  rounded-lg px-4 py-2 mt-4 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                Add Parts 
             </button>
-
+        </div>
             <!-- Card Display Area -->
             <!-- Card Container Grid Setup -->
             <div id="card-container"
@@ -67,6 +99,25 @@
             </div>
 
         </section>
+
+
+        <!-- Add the container for the table -->
+<div id="table-container" class="w-full p-4 overflow-hidden">
+    <table id="card-table" class="table-auto w-full border-collapse border border-gray-300">
+        <thead>
+            <tr class="bg-gray-200">
+               
+                <th class="border border-gray-300 px-4 py-2">Image</th>
+                <th class="border border-gray-300 px-4 py-2">Title</th>
+                <th class="border border-gray-300 px-4 py-2">Price</th>
+                <th class="border border-gray-300 px-4 py-2">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Rows will be dynamically added here -->
+        </tbody>
+    </table>
+</div>
 
 
 
