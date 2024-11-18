@@ -94,40 +94,59 @@ async function loadPosts() {
     }
 }
 
-// Function to display each post in the specified format
+
+
 function displayPost(postData) {
-    const postsContainer = document.getElementById("postsContainer");
+    const postsContainer = document.getElementById("postsContainerd");
 
-    const postCard = document.createElement("div");
-    postCard.className = "relative max-w-sm mx-auto bg-white rounded-lg shadow-lg overflow-hidden mt-4";
-    postCard.setAttribute("data-post-id", postData.id);
+    // Create the table if it doesn't exist
+    let table = postsContainer.querySelector("table");
+    if (!table) {
+        table = document.createElement("table");
+        table.className = "table-auto w-full border-collapse border border-gray-300 text-left overflow-x-auto";
+        table.innerHTML = `
+            <thead>
+                <tr class="bg-gray-100">
+                    <th class="px-4 py-2 border">Image</th>
+                    <th class="px-4 py-2 border">Title</th>
+                    <th class="px-4 py-2 border">Posted By</th>
+                    <th class="px-4 py-2 border">Date Created</th>
+                    <th class="px-4 py-2 border">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        `;
+        postsContainer.appendChild(table);
+    }
 
-    postCard.innerHTML = `
-        <img src="${postData.main_image}" alt="Worker" class="w-full h-48 object-cover">
-        <div class="p-4">
-            <div class="flex items-center mb-4">
-                <img src="images/pp.jpeg" alt="${postData.posted_by}" class="w-10 h-10 rounded-full mr-3">
-                <div>
-                    <p class="text-gray-800 font-semibold">Posted by ${postData.posted_by}</p>
-                    <p class="text-sm text-blue-500">${postData.date_posted}</p>
-                </div>
-            </div>
-            <h5 class="text-lg font-bold text-gray-900 mb-4">${postData.title}</h5>
-            <div class="text-center flex">
-                <button class="w-full px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition duration-300">
-                    Read more...
-                </button>
-            </div>
-        </div> <br> <br>
-        <!-- Delete image positioned at bottom-right -->
-        <img src="images/delete1.png" alt="Delete" class="delete-image absolute bottom-2 right-2 w-8 h-8 cursor-pointer">
+    // Add a new row to the table
+    const tbody = table.querySelector("tbody");
+    const row = document.createElement("tr");
+
+    row.className = "hover:bg-gray-50";
+    row.setAttribute("data-post-id", postData.id);
+    row.innerHTML = `
+        <td class="px-4 py-2 border">
+            <img src="${postData.main_image}" alt="Post Image" class="w-20 h-20 object-cover rounded">
+        </td>
+        <td class="px-4 py-2 border text-gray-900 font-semibold">${postData.title}</td>
+        <td class="px-4 py-2 border text-gray-700">${postData.posted_by}</td>
+        <td class="px-4 py-2 border text-gray-500">${postData.date_posted}</td>
+        <td class="px-4 py-2 border text-center">
+            <img src="images/delete1.png" alt="Delete" class="delete-image w-8 h-8 cursor-pointer mx-auto">
+        </td>
     `;
 
-    postsContainer.appendChild(postCard);
+    tbody.appendChild(row);
 
-    const deleteImage = postCard.querySelector(".delete-image");
-    deleteImage.addEventListener("click", () => deletePost(postData.id, postCard));
+    // Add event listener for the delete image
+    const deleteImage = row.querySelector(".delete-image");
+    deleteImage.addEventListener("click", () => deletePost(postData.id, row));
 }
+
+
+
 
 async function deletePost(postId, postCard) {
     try {

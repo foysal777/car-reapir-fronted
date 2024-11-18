@@ -1,5 +1,5 @@
 document.querySelector('form').addEventListener('submit', async (event) => {
-    event.preventDefault(); 
+    event.preventDefault();
 
     const username = document.getElementById('username').value;
     const firstname = document.getElementById('firstname').value;
@@ -24,7 +24,7 @@ document.querySelector('form').addEventListener('submit', async (event) => {
     }
 
     try {
-       
+
         const response = await fetch('https://car-repair-backend-drf.vercel.app/account/register/', {
             method: 'POST',
             headers: {
@@ -36,9 +36,9 @@ document.querySelector('form').addEventListener('submit', async (event) => {
         if (response.ok) {
             console.log(payload);
             alert("Check your E-mail & confirm now");
-             window.location.href = 'login.html'; 
+            window.location.href = 'login.html';
         } else {
-            
+
             const errorData = await response.json();
             alert(`Error: ${errorData.message || "Registration failed."}`);
         }
@@ -55,13 +55,13 @@ document.querySelector('form').addEventListener('submit', async (event) => {
 
 
 document.getElementById("loginForm").addEventListener("submit", async function (event) {
-    event.preventDefault(); 
+    event.preventDefault();
 
     // Get form values
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
 
-    // Send login request to backend
+  
     try {
         const response = await fetch("https://car-repair-backend-drf.vercel.app/account/login/", {
             method: "POST",
@@ -74,20 +74,25 @@ document.getElementById("loginForm").addEventListener("submit", async function (
         if (response.ok) {
             const data = await response.json();
             console.log(data);
-       
 
-                alert("login successfull")
-            
-     
+            if (data.token) 
+                { alert("login successfull") }
+
+            else  {
+                alert("Something wrong can't login ")
+            }
+
+
+
             const token = data.token;
             const userEmail = data.email;
-         
+
             // Store token in local storage
             localStorage.setItem("token", token);
-        
-            localStorage.setItem("email",userEmail );
 
-      
+            localStorage.setItem("email", userEmail);
+
+
             window.location.href = "index.html";
         } else {
             const errorData = await response.json();

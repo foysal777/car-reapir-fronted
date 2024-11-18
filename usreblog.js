@@ -114,9 +114,9 @@ function displayPost(postData) {
             </div>
             <h5 class="text-lg font-bold text-gray-900 mb-4">${postData.title}</h5>
             <div class="text-center flex">
-                <button class="w-full px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition duration-300">
+                <a href="https://hibu.com/blog/industries/website-branding-how-to-market-your-auto-repair-shop" class="w-full px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition duration-300">
                     Read more...
-                </button>
+                </a>
             </div>
         </div> 
     `;
