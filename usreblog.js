@@ -127,11 +127,4 @@ function displayPost(postData) {
    
 }
 
-
-
-
-
-
-
-
 window.addEventListener("DOMContentLoaded", loadPosts);
