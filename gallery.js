@@ -12,6 +12,8 @@ async function GalleryData() {
     
         galleryData = data;
         console.log(galleryData);
+
+        createFilterButtons(); 
         displayGallery(galleryData);
     } catch (error) {
         console.error("error", error)
@@ -35,5 +37,31 @@ function displayGallery(data) {
       `;
     });
   }
+
+  function createFilterButtons() {
+    const categories = ["All Galleries", ...new Set(galleryData.map(item => item.category))];
+    filterButton.innerHTML = "";
+
+    categories.forEach(category => {
+      const button = document.createElement("button");
+      button.textContent = category;
+      button.className = category === "All Galleries"
+        ? "bg-blue-600 text-white px-4 py-2 rounded"
+        : "border border-blue-300 px-4 py-2 rounded hover:bg-gray-200";
+      button.addEventListener("click", () => {
+        if (category === "All Galleries") {
+          displayGallery(galleryData);
+        } else {
+          const filteredData = galleryData.filter(item => item.category === category);
+          displayGallery(filteredData);
+        }
+      });
+      filterButton.appendChild(button);
+    });
+  }
+
+
+
+
 
 GalleryData();
