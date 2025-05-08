@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
         <p class="text-sm text-gray-700">${product.title}</p>
         <div class="text-yellow-500 text-sm">★★★★☆ <span class="text-gray-500 ml-2">Rating TBD</span></div>
         <div class="text-lg font-semibold mt-2">$${product.price}</div>
-        <button class="add-to-cart mt-4 bg-blue-600 text-white text-sm px-4 py-2 rounded hover:bg-blue-700">
+        <button class="add-to-cart mt-4 bg-green-600 text-white text-sm px-4 py-2 rounded hover:bg-gray-700">
           Add to Cart
         </button>
       `;
