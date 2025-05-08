@@ -1,117 +1,69 @@
+document.addEventListener("DOMContentLoaded", () => {
+  const API_URL = "https://car-repair-backend-drf.vercel.app/parts/partsadd/";
+  const productGrid = document.getElementById("product-grid");
+  const searchInput = document.getElementById("searchInput");
+  const sortSelect = document.getElementById("sortSelect");
 
+  let products = []; // Store fetched products
 
+  // Fetch and render
+  fetch(API_URL)
+    .then(res => res.json())
+    .then(data => {
+      products = data;
+      renderProducts(products);
+    })
+    .catch(err => {
+      console.error("Error loading products:", err);
+      productGrid.innerHTML = `<p class="text-center col-span-4 text-red-500">Failed to load products.</p>`;
+    });
 
-const API_URL = 'https://car-repair-backend-drf.vercel./parts/partsadd/';
-const IMGBB_API_URL = 'https://api.imgbb.com/1/upload';
-const IMGBB_API_KEY = 'add07eb16060304e9d624f9962001708';
-
-// Open modal
-function openModal() {
-    document.getElementById('modal').classList.remove('hidden');
-}
-
-// Close modal
-function closeModal() {
-    document.getElementById('modal').classList.add('hidden');
-}
-
-// Handle form submission
-async function submitPost(event) {
-    event.preventDefault();
-    const title = document.getElementById('title').value;
-    const price = document.getElementById('price').value;
-    const imageFile = document.getElementById('image').files[0];
-
-    if (!imageFile) {
-        alert("Please select an image.");
-        return;
-    }
-
-    try {
-        // Upload image to imgbb
-        const formData = new FormData();
-        formData.append('image', imageFile);
-        const imgbbResponse = await fetch(`${IMGBB_API_URL}?key=${IMGBB_API_KEY}`, {
-            method: 'POST',
-            body: formData
-        });
-        const imgbbData = await imgbbResponse.json();
-
-        // Get the image URL
-        const imageUrl = imgbbData.data.url;
-
-        // Send data to your API
-        const token = localStorage.getItem("token");
+  // Render products to the DOM
+  function renderProducts(items) {
+    productGrid.innerHTML = "";
+    items.forEach(product => {
+      const card = document.createElement("div");
+      card.className = "bg-white rounded-xl shadow p-4 relative";
+      card.innerHTML = `
+        <div class="absolute top-2 left-2 space-y-1 text-white text-xs font-bold">
       
-        const postResponse = await fetch(API_URL, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                "Authorization": `Token ${token}`,
-                
-            },
-            body: JSON.stringify({
-                title,
-                price,
-                image_url: imageUrl
-            })
-        });
-
-        if (!postResponse.ok) {
-            throw new Error('Network response was not ok');
-        }
-
-        const postData = await postResponse.json();
-         alert("Post successfully complete.")
-        // Add new card to the display
-        addCard(postData);
-
-        // Reset form and close modal
-        document.getElementById('postForm').reset();
-        closeModal();
-    } catch (error) {
-        console.error("Error submitting post:", error);
-    }
-}
-
-// Load posts from API and display them
-async function loadPosts() {
-    try {
-        const response = await fetch(API_URL);
-        const posts = await response.json();
-        posts.forEach(post => addCard(post));
-    } catch (error) {
-        console.error("Error loading posts:", error);
-    }
-}
-
-// Add card to display area
-function addCard(postData) {
-    const cardContainer = document.getElementById('card-container');
-    const card = document.createElement('div');
-
-    // Set card styling and width
-    card.className = 'card bg-white rounded-lg shadow-md overflow-hidden transform transition ease-in-out duration-3000 duration-100 hover:shadow-lg  border-2 border-black-500';
-
-    card.innerHTML = `
-        <div class="card-image w-full h-48 overflow-hidden rounded-t-lg">
-            <img src="${postData.image_url}" alt="Product Image" class="w-full h-full object-cover">
+          <span class="bg-red-600 px-2 py-1 rounded">NEW</span>
+         
         </div>
-        <div class="p-4 flex flex-col justify-between">
-            <h2 class="text-lg font-semibold text-gray-800 truncate">${postData.title}</h2>
-            <p class="text-blue-600 text-2xl font-bold mt-1">$${postData.price}</p>
+        <img src="${product.image_url}" alt="${product.title}" class="w-full h-36 object-contain mb-4">
+        <p class="text-sm text-gray-700">${product.title}</p>
+        <div class="text-yellow-500 text-sm">★★★★☆ <span class="text-gray-500 ml-2">Rating TBD</span></div>
+        <div class="text-lg font-semibold mt-2">$${product.price}</div>
+        <button class="add-to-cart mt-4 bg-blue-600 text-white text-sm px-4 py-2 rounded hover:bg-blue-700">
+          Add to Cart
+        </button>
+      `;
 
-             <a href="https://sandbox.sslcommerz.com/EasyCheckOut/testcde07ebaa4f214f7d85cb12d926294a4480" onclick="handleBuyNow('${postData.id}', '${postData.title}', ${postData.price})"
-                class="mt-4 bg-blue-700 text-center text-white rounded-lg px-4 py-2 hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-500">
-                Buy Now
-            </a>
-        </div>
-    `;
+      productGrid.appendChild(card);
+    });
+  }
 
-    cardContainer.appendChild(card);
-}
+  // Search function
+  searchInput.addEventListener("input", () => {
+    filterAndRender();
+  });
 
+  // Sort function
+  sortSelect.addEventListener("change", () => {
+    filterAndRender();
+  });
 
+  function filterAndRender() {
+    const keyword = searchInput.value.toLowerCase();
+    let filtered = products.filter(p => p.title.toLowerCase().includes(keyword));
 
-// Load posts on page load
-document.addEventListener('DOMContentLoaded', loadPosts);
+    const sortOption = sortSelect.value;
+    if (sortOption === "low-high") {
+      filtered.sort((a, b) => parseFloat(a.price) - parseFloat(b.price));
+    } else if (sortOption === "high-low") {
+      filtered.sort((a, b) => parseFloat(b.price) - parseFloat(a.price));
+    }
+
+    renderProducts(filtered);
+  }
+});
