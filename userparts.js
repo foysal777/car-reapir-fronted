@@ -41,13 +41,13 @@ function renderProducts(items) {
     productGrid.appendChild(card);
   });
 
-  // ✅ Attach click handler after rendering
+  //  Attach click handler after rendering
   document.querySelectorAll(".add-to-cart").forEach(button => {
     button.addEventListener("click", (e) => {
       const title = e.target.dataset.title;
       const price = e.target.dataset.price;
 
-      // 🟩 POST request to mock order endpoint
+      //  POST request to mock order endpoint
       fetch("https://car-repair-backend-drf.vercel.app/parts/api/create-mock-order/", {
         method: "POST",
         headers: {
@@ -57,8 +57,16 @@ function renderProducts(items) {
       })
         .then(res => res.json())
         .then(data => {
+          console.log(data)
           if (data.payment_url) {
-            window.location.href = data.payment_url; // Redirect to mock payment page
+            console.log(data.payment_url)
+            setTimeout(()=>{
+
+             window.location.href = data.payment_url; 
+
+            },8000);
+
+            
           } else {
             alert("Something went wrong!");
           }
