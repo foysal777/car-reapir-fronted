@@ -5,10 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
- 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
-  
+
 </head>
 
 <body>
@@ -19,8 +21,8 @@
     </header>
 
     <main>
-       
-  
+
+
 
         <section class="bg-gray-100 flex items-center justify-center min-h-screen">
 
@@ -30,98 +32,79 @@
                     <h2 class="text-orange-500 font-semibold tracking-wide">PROJECTS</h2>
                     <h1 class="text-3xl font-bold">Done Projects</h1>
                 </div>
-        
+
                 <!-- Projects Grid -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-                    <!-- Project Card 1 -->
-                    <div class="bg-white shadow-md rounded-lg overflow-hidden">
-                        <img src="images/pro-1.jpg" alt="Project Image" class="w-full h-60 object-cover">
-                        <div class="p-4">
-                            <p class="text-lg font-semibold text-gray-800">Tire Maintenance</p>
-                            <p class="text-sm text-gray-500">Project Completed</p>
-                        </div>
-                    </div>
-        
-        
-                    <!-- Project Card 2 -->
-                    <div class="bg-white shadow-md rounded-lg overflow-hidden">
-                        <img src="images/pro-1.jpg" alt="Project Image" class="w-full h-60 object-cover">
-                        <div class="p-4">
-                            <p class="text-lg font-semibold text-gray-800">Breaks Maintenance</p>
-                            <p class="text-sm text-gray-500">Project Completed</p>
-                        </div>
-                    </div>
-        
-                    <!-- Project Card 3 -->
-                    <div class="bg-white shadow-md rounded-lg overflow-hidden">
-                        <img src="images/pro-1.jpg" alt="Project Image" class="w-full h-60 object-cover">
-                        <div class="p-4">
-                            <p class="text-lg font-semibold text-gray-800">Battery Replacement</p>
-                            <p class="text-sm text-gray-500">Project Completed</p>
-                        </div>
-                    </div>
+                <div id="projectsContainer" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                   
                 </div>
 
-                
+
             </div>
 
         </section>
-       
-
-<!-- review section  -->
 
 
+        <!-- review section  -->
 
-<section class="bg-gray-100 flex items-center justify-center min-h-screen">
-    <div class="w-full max-w-lg p-6  ">
-        <!-- Form Title -->
-        <h2 class="text-2xl font-semibold text-blue-600 mb-6 text-center">
-            Leave Your Feedback
-        </h2>
 
-        <!-- Feedback Form -->
-        <form id="feedback-form">
-            <div class="mb-4">
-                <label for="name" class="block text-gray-700 font-medium mb-2">Name</label>
-                <input type="text" id="name" name="name" placeholder="Enter your name" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+
+        <section class="bg-gray-100 flex items-center justify-center min-h-screen">
+            <div class="w-full max-w-lg p-6  ">
+                <!-- Form Title -->
+                <h2 class="text-2xl font-semibold text-blue-600 mb-6 text-center">
+                    Leave Your Feedback
+                </h2>
+
+                <!-- Feedback Form -->
+                <form id="feedback-form">
+                    <div class="mb-4">
+                        <label for="name" class="block text-gray-700 font-medium mb-2">Name</label>
+                        <input type="text" id="name" name="name" placeholder="Enter your name"
+                            class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            required>
+                    </div>
+                    <div class="mb-4">
+                        <label for="rating" class="block text-gray-700 font-medium mb-2">Rating</label>
+                        <select id="rating" name="rating"
+                            class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-blue-600"
+                            required>
+                            <option value="5">★★★★★ (5 - Excellent)</option>
+                            <option value="4">★★★★☆ (4 - Good)</option>
+                            <option value="3">★★★☆☆ (3 - Average)</option>
+                            <option value="2">★★☆☆☆ (2 - Poor)</option>
+                            <option value="1">★☆☆☆☆ (1 - Very Poor)</option>
+                        </select>
+                    </div>
+                    <div class="mb-6">
+                        <label for="comment" class="block text-gray-700 font-medium mb-2">Comment</label>
+                        <textarea id="comment" name="comment" rows="4" placeholder="Write your feedback here..."
+                            class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            required></textarea>
+                    </div>
+                    <button type="submit"
+                        class="w-full bg-blue-500 text-white font-semibold py-2 rounded-lg hover:bg-blue-600 transition duration-300">
+                        Submit Feedback
+                    </button>
+                </form>
+                <div id="feedback-list" class="mt-8">
+                    <!-- Fetched feedback entries will be inserted here by JavaScript -->
+                </div>
+
             </div>
-            <div class="mb-4">
-                <label for="rating" class="block text-gray-700 font-medium mb-2">Rating</label>
-                <select id="rating" name="rating" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-blue-600" required>
-                    <option value="5">★★★★★ (5 - Excellent)</option>
-                    <option value="4">★★★★☆ (4 - Good)</option>
-                    <option value="3">★★★☆☆ (3 - Average)</option>
-                    <option value="2">★★☆☆☆ (2 - Poor)</option>
-                    <option value="1">★☆☆☆☆ (1 - Very Poor)</option>
-                </select>
-            </div>
-            <div class="mb-6">
-                <label for="comment" class="block text-gray-700 font-medium mb-2">Comment</label>
-                <textarea id="comment" name="comment" rows="4" placeholder="Write your feedback here..." class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required></textarea>
-            </div>
-            <button type="submit" class="w-full bg-blue-500 text-white font-semibold py-2 rounded-lg hover:bg-blue-600 transition duration-300">
-                Submit Feedback
-            </button>
-        </form>
-        <div id="feedback-list" class="mt-8">
-        <!-- Fetched feedback entries will be inserted here by JavaScript -->
-    </div>
-        
-    </div>
 
 
-    
-</section>
+
+        </section>
 
 
 
 
 
-<section  class="bg-gray-100 flex items-center justify-center min-h-screen">
+        <section class="bg-gray-100 flex items-center justify-center min-h-screen">
 
-    <!-- Feedback List -->
-    
-</section>
+            <!-- Feedback List -->
+
+        </section>
 
 
 

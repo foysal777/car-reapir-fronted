@@ -1,4 +1,31 @@
+document.addEventListener('DOMContentLoaded', () => {
+  const container = document.getElementById('projectsContainer');
 
+  fetch('https://car-repair-backend-drf.vercel.app/blog/api/projects/')
+    .then(response => response.json())
+    .then(data => {
+      data.forEach(project => {
+        const card = document.createElement('div');
+        card.className = 'bg-white shadow-md rounded-lg overflow-hidden';
+
+        card.innerHTML = `
+          <img src="${project.image}" alt="Project Image" class="w-full h-60 object-cover">
+          <div class="p-4">
+            <p class="text-lg font-semibold text-gray-800">${project.title}</p>
+            <p class="text-sm text-gray-500">${project.description}</p>
+          </div>
+        `;
+
+        container.appendChild(card);
+      });
+    })
+    .catch(error => {
+      console.error('Error fetching projects:', error);
+      container.innerHTML = '<p class="text-red-500">Failed to load projects.</p>';
+    });
+});
+
+// *********************************
 async function submitFeedback(event) {
     event.preventDefault(); 
 
